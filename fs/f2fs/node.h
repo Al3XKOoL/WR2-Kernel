@@ -75,9 +75,25 @@ static inline void node_info_from_raw_nat(struct node_info *ni,
 	ni->version = raw_ne->version;
 }
 
-enum nid_type {
+static inline void raw_nat_from_node_info(struct f2fs_nat_entry *raw_ne,
+						struct node_info *ni)
+{
+	raw_ne->ino = cpu_to_le32(ni->ino);
+	raw_ne->block_addr = cpu_to_le32(ni->blk_addr);
+	raw_ne->version = ni->version;
+}
+
+enum mem_type {
 	FREE_NIDS,	/* indicates the free nid list */
-	NAT_ENTRIES	/* indicates the cached nat entry */
+	NAT_ENTRIES,	/* indicates the cached nat entry */
+	DIRTY_DENTS	/* indicates dirty dentry pages */
+};
+
+struct nat_entry_set {
+	struct list_head set_list;	/* link with all nat sets */
+	struct list_head entry_list;	/* link with dirty nat entries */
+	nid_t start_nid;		/* start nid of nats in set */
+	unsigned int entry_cnt;		/* the # of nat entries in set */
 };
 
 /*
