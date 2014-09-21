@@ -2113,7 +2113,7 @@ static struct request *cfq_check_fifo(struct cfq_queue *cfqq)
 		return NULL;
 
 	rq = rq_entry_fifo(cfqq->fifo.next);
-	if (time_before(jiffies, rq_fifo_time(rq)))
+	if (time_before_eq(jiffies, rq_fifo_time(rq)))
 		rq = NULL;
 
 	cfq_log_cfqq(cfqq->cfqd, cfqq, "fifo=%p", rq);
