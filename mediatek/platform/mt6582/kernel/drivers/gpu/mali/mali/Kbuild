@@ -142,7 +142,7 @@ mali-$(CONFIG_MALI400_POWER_PERFORMANCE_POLICY) += common/mali_power_performance
 # Tell the Linux build system from which .o file to create the kernel module
 obj-$(CONFIG_MALI400) := mali.o
 
-ccflags-y += $(EXTRA_DEFINES)
+ccflags-y += $(EXTRA_DEFINES) $(OPTIM)
 
 # Set up our defines, which will be passed to gcc
 ccflags-y += -DPROFILING_SKIP_PP_JOBS=$(PROFILING_SKIP_PP_JOBS)
