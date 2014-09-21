@@ -31,8 +31,8 @@
 #include <linux/suspend.h>
 #include <linux/reboot.h>
 
-#ifdef CONFIG_POWERSUSPEND
-#include <linux/powersuspend.h>
+#ifdef CONFIG_HAS_EARLYSUSPEND
+#include <linux/earlysuspend.h>
 #endif
 
 static unsigned int sr_manual = 0;
@@ -248,8 +248,8 @@ static struct dbs_tuners {
 	unsigned int dvfs_debug;
 	unsigned int max_freq;
 	unsigned int min_freq;
-#ifdef CONFIG_POWERSUSPEND
-	int power_suspend;
+#ifdef CONFIG_HAS_EARLYSUSPEND
+	int early_suspend;
 #endif
 	unsigned int up_threshold_at_min_freq;
 	unsigned int freq_for_responsiveness;
@@ -265,8 +265,8 @@ static struct dbs_tuners {
 	.max_cpu_lock = DEF_MAX_CPU_LOCK,
 	.hotplug_lock = ATOMIC_INIT(0),
 	.dvfs_debug = 0,
-#ifdef CONFIG_POWERSUSPEND
-	.power_suspend = -1,
+#ifdef CONFIG_HAS_EARLYSUSPEND
+	.early_suspend = -1,
 #endif
 	.up_threshold_at_min_freq = UP_THRESHOLD_AT_MIN_FREQ,
 	.freq_for_responsiveness = FREQ_FOR_RESPONSIVENESS,
@@ -1261,15 +1261,15 @@ static struct notifier_block reboot_notifier = {
 	.notifier_call = reboot_notifier_call,
 };
 
-#ifdef CONFIG_POWERSUSPEND
-static struct power_suspend power_suspend;
+#ifdef CONFIG_HAS_EARLYSUSPEND
+static struct early_suspend early_suspend;
 unsigned int prev_freq_step;
 unsigned int prev_sampling_rate;
 static unsigned int registration = 0; 
-static void cpufreq_pegasusq_power_suspend(struct power_suspend *h)
+static void cpufreq_pegasusq_early_suspend(struct early_suspend *h)
 {
 	if (!registration) {
-		dbs_tuners_ins.power_suspend =
+		dbs_tuners_ins.early_suspend =
 			atomic_read(&g_hotplug_lock);
 		prev_freq_step = dbs_tuners_ins.freq_step;
 		prev_sampling_rate = dbs_tuners_ins.sampling_rate;
@@ -1280,10 +1280,10 @@ static void cpufreq_pegasusq_power_suspend(struct power_suspend *h)
 		stop_rq_work();
 	}
 }
-static void cpufreq_pegasusq_late_resume(struct power_suspend *h)
+static void cpufreq_pegasusq_late_resume(struct early_suspend *h)
 {
-	atomic_set(&g_hotplug_lock, dbs_tuners_ins.power_suspend);
-	dbs_tuners_ins.power_suspend = -1;
+	atomic_set(&g_hotplug_lock, dbs_tuners_ins.early_suspend);
+	dbs_tuners_ins.early_suspend = -1;
 	dbs_tuners_ins.freq_step = prev_freq_step;
 	dbs_tuners_ins.sampling_rate = prev_sampling_rate;
 	apply_hotplug_lock();
@@ -1351,17 +1351,17 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 		mutex_init(&this_dbs_info->timer_mutex);
 		dbs_timer_init(this_dbs_info);
 
-#ifdef CONFIG_POWERSUSPEND
+#ifdef CONFIG_HAS_EARLYSUSPEND
 		registration = 1;
-			register_power_suspend(&power_suspend);
+			register_early_suspend(&early_suspend);
 		registration = 0;	
 			pr_info("[HOTPLUG] pegasusq start\n");
 #endif
 		break;
 
 	case CPUFREQ_GOV_STOP:
-#ifdef CONFIG_POWERSUSPEND
-		unregister_power_suspend(&power_suspend);
+#ifdef CONFIG_HAS_EARLYSUSPEND
+		unregister_early_suspend(&early_suspend);
 #endif
 
 		dbs_timer_exit(this_dbs_info);
@@ -1426,10 +1426,10 @@ static int __init cpufreq_gov_dbs_init(void)
 	if (ret)
 		goto err_reg;
 
-#ifdef CONFIG_POWERSUSPEND
-	//early_suspend.level = EARLY_SUSPEND_LEVEL_DISABLE_FB;
-	power_suspend.suspend = cpufreq_pegasusq_power_suspend;
-	power_suspend.resume = cpufreq_pegasusq_late_resume;
+#ifdef CONFIG_HAS_EARLYSUSPEND
+	early_suspend.level = EARLY_SUSPEND_LEVEL_DISABLE_FB;
+	early_suspend.suspend = cpufreq_pegasusq_early_suspend;
+	early_suspend.resume = cpufreq_pegasusq_late_resume;
 #endif
 
 	return ret;
