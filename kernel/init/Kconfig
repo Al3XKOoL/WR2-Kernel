@@ -940,10 +940,6 @@ source "usr/Kconfig"
 
 endif
 
-choice
-	prompt "Optimization level (-Os, -O2, -O3, -Ofast)"
-	default CC_OPTIMIZE_DEFAULT
-
 config CC_OPTIMIZE_FOR_SIZE
 	bool "Use -Os"
 	help
@@ -967,8 +963,6 @@ config CC_OPTIMIZE_FAST
 	help
 	  Enabling this option will pass "-O3" instead of "-Os" or "-O2" or "-O3" to gcc
 	  resulting in a large sized kernel, speed optimized.
-
-endchoice
 
 config SYSCTL
 	bool
