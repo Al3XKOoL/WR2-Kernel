@@ -226,8 +226,8 @@ static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			goto err1;
 		}
 from_old_alarm_set:
-		pr_alarm(IO, "alarm %d set %ld.%09ld\n", alarm_type,
-			new_alarm_time.tv_sec, new_alarm_time.tv_nsec);
+	//	pr_alarm(IO, "alarm %d set %ld.%09ld\n", alarm_type,
+	//		new_alarm_time.tv_sec, new_alarm_time.tv_nsec);
 
 		if (alarm_type == ANDROID_ALARM_POWER_ON) {
 			alarm_set_power_on(new_alarm_time, false);
@@ -249,7 +249,7 @@ from_old_alarm_set:
 		/* fall though */
 	case ANDROID_ALARM_WAIT:
 		spin_lock_irqsave(&alarm_slock, flags);
-		pr_alarm(IO, "alarm wait\n");
+	//	pr_alarm(IO, "alarm wait\n");
 		if (!alarm_pending && wait_pending) {
 			wake_unlock(&alarm_wake_lock);
 			wait_pending = 0;
@@ -340,7 +340,7 @@ err1:
 static int alarm_open(struct inode *inode, struct file *file)
 {
 	file->private_data = NULL;
-	pr_alarm(INFO, "alarm_open (%d:%d)\n", current->tgid, current->pid);
+//	pr_alarm(INFO, "alarm_open (%d:%d)\n", current->tgid, current->pid);
 	return 0;
 }
 
@@ -354,9 +354,9 @@ static int alarm_release(struct inode *inode, struct file *file)
 		for (i = 0; i < ANDROID_ALARM_TYPE_COUNT; i++) {
 			uint32_t alarm_type_mask = 1U << i;
 			if (alarm_enabled & alarm_type_mask) {
-				pr_alarm(INFO, "alarm_release: clear alarm, "
-					"pending %d\n",
-					!!(alarm_pending & alarm_type_mask));
+	//			pr_alarm(INFO, "alarm_release: clear alarm, "
+	//				"pending %d\n",
+	//				!!(alarm_pending & alarm_type_mask));
 				alarm_enabled &= ~alarm_type_mask;
 			}
 			spin_unlock_irqrestore(&alarm_slock, flags);
@@ -385,7 +385,7 @@ static void devalarm_triggered(struct devalarm *alarm)
 	uint32_t alarm_type_mask = 1U << alarm->type;
 
 	//pr_alarm(INT, "devalarm_triggered type %d\n", alarm->type);
-	xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_triggered type %d\n", alarm->type);
+	//xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_triggered type %d\n", alarm->type);
 	
 	spin_lock_irqsave(&alarm_slock, flags);
 	if (alarm_enabled & alarm_type_mask) {
@@ -403,7 +403,7 @@ static enum hrtimer_restart devalarm_hrthandler(struct hrtimer *hrt)
 	struct devalarm *devalrm = container_of(hrt, struct devalarm, u.hrt);
 
 	//pr_alarm(INT, "devalarm_hrthandler\n");
-	xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_hrthandler\n");
+	//xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_hrthandler\n");
 	
 	devalarm_triggered(devalrm);
 	return HRTIMER_NORESTART;
@@ -415,7 +415,7 @@ static enum alarmtimer_restart devalarm_alarmhandler(struct alarm *alrm,
 	struct devalarm *devalrm = container_of(alrm, struct devalarm, u.alrm);
 
 	//pr_alarm(INT, "devalarm_alarmhandler\n");
-	xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_alarmhandler\n");
+//	xlog_printk(ANDROID_LOG_DEBUG, "Power/Alarm", "devalarm_alarmhandler\n");
 	
 	devalarm_triggered(devalrm);
 	return ALARMTIMER_NORESTART;
