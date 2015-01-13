@@ -944,6 +944,8 @@ on boot
 
 
 		
+    start sysinit
+
     class_start core
     class_start main
     class_start default
@@ -1331,6 +1333,10 @@ service drm /system/bin/drmserver
     class main
     user drm
     group drm system audio sdcard_rw net_raw inet drmrpc media sdcard_r media_rw
+
+service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
+    disabled
+    oneshot
 
 service media /system/bin/mediaserver
     class main
