@@ -1266,8 +1266,8 @@ static int mass_storage_function_init(struct android_usb_function *f,
 	config->fsg.nluns = NLUN_STORAGE;
 
 	for(i = 0; i < config->fsg.nluns; i++) {
-		config->fsg.luns[2].removable = 1;
-		config->fsg.luns[2].nofua = 1;
+		config->fsg.luns[i].removable = 1;
+		config->fsg.luns[i].nofua = 1;
 	}
 
 	common = fsg_common_init(NULL, cdev, &config->fsg);
@@ -1295,7 +1295,7 @@ static int mass_storage_function_init(struct android_usb_function *f,
 		sprintf(string_lun, "lun%d",i);
 
 		err = sysfs_create_link(&f->dev->kobj,
-				&common->luns[2].dev.kobj,
+				&common->luns[i].dev.kobj,
 				string_lun);
 		if (err) {
 			kfree(config);
