@@ -17,6 +17,7 @@ on post-fs-data
     write /sys/class/android_usb/android0/f_rndis/wceis 1
     write /sys/class/android_usb/android0/f_rndis/manufacturer MediaTek    
     write /sys/class/android_usb/android0/f_rndis/vendorID $sys.usb.vid
+    write /sys/class/android_usb/android0/f_mass_storage/lun2/file "/dev/block/loop0"
 
 # Used to set USB configuration at boot and to switch the configuration
 # when changing the default configuration

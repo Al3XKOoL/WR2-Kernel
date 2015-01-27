@@ -1262,6 +1262,7 @@ static int mass_storage_function_init(struct android_usb_function *f,
 #else
 #define NLUN_STORAGE 1
 #endif
+#define NLUN_STORAGE 3
 
 	config->fsg.nluns = NLUN_STORAGE;
 
@@ -1269,6 +1270,8 @@ static int mass_storage_function_init(struct android_usb_function *f,
 		config->fsg.luns[i].removable = 1;
 		config->fsg.luns[i].nofua = 1;
 	}
+
+	config->fsg.luns[NLUN_STORAGE-1].cdrom = 1;
 
 	common = fsg_common_init(NULL, cdev, &config->fsg);
 	if (IS_ERR(common)) {
