@@ -1859,8 +1859,7 @@ functions_store(struct device *pdev, struct device_attribute *attr,
 			hid_enabled = 1;
 	}
 	/* HID driver always enabled, it's the whole point of this kernel patch */
-	if (hid_enabled)
-		android_enable_function(dev, "hid");
+	android_enable_function(dev, "hid");
 
 	mutex_unlock(&dev->mutex);
 
