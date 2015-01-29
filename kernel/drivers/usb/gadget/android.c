@@ -1262,7 +1262,7 @@ static int mass_storage_function_init(struct android_usb_function *f,
 #else
 #define NLUN_STORAGE 1
 #endif
-#define NLUN_STORAGE 3
+#define NLUN_STORAGE 2
 
 	config->fsg.nluns = NLUN_STORAGE;
 
@@ -1292,7 +1292,7 @@ static int mass_storage_function_init(struct android_usb_function *f,
 	 * "i" starts from "1", cuz dont want to change the naming of
 	 * the original path of "lun0".
 	 */
-	for(i = 1; i < config->fsg.nluns; i++) {
+	for(i = 0; i < config->fsg.nluns; i++) {
 		char string_lun[5]={0};
 
 		sprintf(string_lun, "lun%d",i);
