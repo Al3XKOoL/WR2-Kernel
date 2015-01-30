@@ -1262,7 +1262,7 @@ static int mass_storage_function_init(struct android_usb_function *f,
 #else
 #define NLUN_STORAGE 1
 #endif
-#define NLUN_STORAGE 2
+#define NLUN_STORAGE 3
 
 	config->fsg.nluns = NLUN_STORAGE;
 
