@@ -422,8 +422,8 @@ static int hidg_setup(struct usb_function *f,
 		  | HID_REQ_SET_PROTOCOL):
 		VDBG(cdev, "set_protocol\n");
 		// always respond OK !
-		length = 0;
-		goto respond;
+		length = 0x1;
+		memset(req->buf, 0x0, length);
 		//goto stall;
 		break;
 
