@@ -149,7 +149,6 @@ struct rw_semaphore __sched *rwsem_down_read_failed(struct rw_semaphore *sem)
 	long count, adjustment = -RWSEM_ACTIVE_READ_BIAS;
 	struct rwsem_waiter waiter;
 	struct task_struct *tsk = current;
-	signed long count;
 
 	/* set up my own style of waitqueue */
 	waiter.task = tsk;
