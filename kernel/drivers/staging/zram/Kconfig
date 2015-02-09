@@ -1,8 +1,11 @@
 config ZRAM
 	tristate "Compressed RAM block device support"
-	depends on BLOCK && SYSFS && ZSMALLOC
-	select LZO_COMPRESS
-	select LZO_DECOMPRESS
+	# X86 dependency is because zsmalloc uses non-portable pte/tlb
+	# functions
+	depends on BLOCK && SYSFS
+	select ZSMALLOC
+	select LZO_COMPRESS if !(SNAPPY_COMPRESS && SNAPPY_DECOMPRESS)
+	select LZO_DECOMPRESS if !(SNAPPY_COMPRESS && SNAPPY_DECOMPRESS)
 	default n
 	help
 	  Creates virtual block devices called /dev/zramX (X = 0, 1, ...).
@@ -23,3 +26,10 @@ config ZRAM_DEBUG
 	help
 	  This option adds additional debugging code to the compressed
 	  RAM block device driver.
+
+config ZRAM_FOR_ANDROID
+    bool "Optimize zram behavior for android"
+    depends on ZRAM && ANDROID
+    default n
+    help
+        This option enables modified zram behavior optimized for android
