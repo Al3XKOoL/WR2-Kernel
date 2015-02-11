@@ -33,3 +33,26 @@ config ZRAM_FOR_ANDROID
     default n
     help
         This option enables modified zram behavior optimized for android
+
+choice ZRAM_COMPRESS
+	prompt "compression method"
+	depends on ZRAM
+	default ZRAM_LZO
+	help
+	  Select the compression method used by zram.
+	  LZO is the default. Snappy compresses a bit worse (around ~2%) but
+	  much (~2x) faster, at least on x86-64, LZ4 is said to be the fasted
+	  for now.
+config ZRAM_LZO
+	bool "LZO compression"
+	select LZO_COMPRESS
+	select LZO_DECOMPRESS
+config ZRAM_SNAPPY
+	bool "Snappy compression"
+	select SNAPPY_COMPRESS
+	select SNAPPY_DECOMPRESS
+config ZRAM_LZ4
+	bool "LZ4 compression"
+	select LZ4_COMPRESS
+	select LZ4_DECOMPRESS
+endchoice
