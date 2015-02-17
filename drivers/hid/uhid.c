@@ -328,6 +328,9 @@ static int uhid_dev_create(struct uhid_device *uhid,
 	hid->driver_data = uhid;
 	hid->dev.parent = uhid_misc.this_device;
 
+    hid_err(hid, "vendorid=%x, productID=%x\n",
+					hid->vendor, hid->product);
+
 	uhid->hid = hid;
 	uhid->running = true;
 
