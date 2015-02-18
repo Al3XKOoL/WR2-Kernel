@@ -647,9 +647,11 @@ static int create_device(struct zram *zram, int device_id)
 	 /* gendisk structure */
 	zram->disk = alloc_disk(1);
 	if (!zram->disk) {
+		blk_cleanup_queue(zram->queue);
 		pr_warn("Error allocating disk structure for device %d\n",
 			device_id);
-		goto out_free_queue;
+		ret = -ENOMEM;
+		goto out;
 	}
 
 	zram->disk->major = zram_major;
@@ -678,17 +680,11 @@ static int create_device(struct zram *zram, int device_id)
 				&zram_disk_attr_group);
 	if (ret < 0) {
 		pr_warn("Error creating sysfs group");
-		goto out_free_disk;
+		goto out;
 	}
 
 	zram->init_done = 0;
-	return 0;
 
-out_free_disk:
-	del_gendisk(zram->disk);
-	put_disk(zram->disk);
-out_free_queue:
-	blk_cleanup_queue(zram->queue);
 out:
 	return ret;
 }
@@ -821,10 +817,8 @@ static void __exit zram_exit(void)
 	for (i = 0; i < num_devices; i++) {
 		zram = &zram_devices[i];
 
-		get_disk(zram->disk);
 		destroy_device(zram);
 		zram_reset_device(zram);
-		put_disk(zram->disk);
 	}
 
 	unregister_blkdev(zram_major, "zram");

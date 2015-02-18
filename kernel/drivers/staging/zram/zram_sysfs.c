@@ -96,10 +96,6 @@ static ssize_t disksize_store(struct device *dev,
 	up_write(&zram->init_lock);
 
 	return len;
-
-out:
-	bdput(bdev);
-	return ret;
 }
 
 static ssize_t initstate_show(struct device *dev,
@@ -145,6 +141,10 @@ static ssize_t reset_store(struct device *dev,
 
 	zram_reset_device(zram);
 	return len;
+
+out:
+	bdput(bdev);
+	return ret;
 }
 
 static ssize_t num_reads_show(struct device *dev,
@@ -232,11 +232,8 @@ static ssize_t mem_used_total_show(struct device *dev,
 	struct zram *zram = dev_to_zram(dev);
 	struct zram_meta *meta = zram->meta;
 
-	down_read(&zram->init_lock);
 	if (zram->init_done)
 		val = zs_get_total_size_bytes(meta->mem_pool);
-
-	up_read(&zram->init_lock);
 
 	return sprintf(buf, "%llu\n", val);
 }
