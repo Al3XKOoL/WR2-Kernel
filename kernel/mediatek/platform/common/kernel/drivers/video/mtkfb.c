@@ -1081,7 +1081,7 @@ static int mtkfb_set_overlay_layer(struct fb_info *info, struct fb_overlay_layer
 
     if(fbdev->layer_enable & ((1 << VIDEO_LAYER_COUNT)-1)){
         if (DISP_STATUS_OK == DISP_EnterOverlayMode()) {
-            MTKFB_LOG("mtkfb_ioctl(MTKFB_ENABLE_OVERLAY)\n");
+            //MTKFB_LOG("mtkfb_ioctl(MTKFB_ENABLE_OVERLAY)\n");
         }
     }
 
@@ -1338,7 +1338,7 @@ LeaveOverlayMode:
     {
         if (DISP_STATUS_OK == DISP_LeaveOverlayMode())
         {
-            MTKFB_LOG("mtkfb_ioctl(MTKFB_DISABLE_OVERLAY)\n");
+            //MTKFB_LOG("mtkfb_ioctl(MTKFB_DISABLE_OVERLAY)\n");
             if(fblayer_dither_needed)
             {
                 DISP_ConfigDither(14, 14, 14, dbr_backup, dbg_backup, dbb_backup);

@@ -1276,7 +1276,7 @@ static int mt_fh_hal_dvfs(enum FH_PLL_ID pll_id, unsigned int dds_value)
 	unsigned int	i=0;
 	unsigned long 	flags=0;
 	unsigned int    ilog =0;
-	FH_MSG("EN: %s:",__func__);
+	//FH_MSG("EN: %s:",__func__);
 
 	local_irq_save(flags);
 	
@@ -1437,7 +1437,7 @@ static int mt_fh_hal_dfs_armpll(unsigned int current_freq, unsigned int target_f
 	fh_set_field(REG_FHCTL0_CFG, FH_SFSTRX_EN, 0);  //disable dvfs mode
     fh_set_field(REG_FHCTL0_CFG, FH_FHCTLX_EN, 0);  //disable hopping control 		
 	target_dds = (((target_freq/100) * (((fh_read32(ARMPLL_CON1)&0x1FFFFF)*1000)/(current_freq/100)))/1000);
-	//FH_MSG("target dds: 0x%x",target_dds);
+	//FH_MSG("EN: %s:",__func__);FH_MSG("target dds: 0x%x",target_dds);
 	
 	mt_fh_hal_dvfs(MT658X_FH_ARM_PLL, target_dds); 
 
