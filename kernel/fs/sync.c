@@ -17,16 +17,15 @@
 #include <linux/backing-dev.h>
 #include "internal.h"
 
-#ifdef CONFIG_DYNAMIC_FSYNC
-extern bool early_suspend_active;
-extern bool dyn_fsync_active;
-#endif
-
 #define FEATURE_PRINT_FSYNC_PID
 #ifdef USER_BUILD_KERNEL
 #undef FEATURE_PRINT_FSYNC_PID
 #endif
 #include <linux/xlog.h>
+#ifdef CONFIG_DYNAMIC_FSYNC
+extern bool early_suspend_active;
+extern bool dyn_fsync_active;
+#endif
 
 #define VALID_FLAGS (SYNC_FILE_RANGE_WAIT_BEFORE|SYNC_FILE_RANGE_WRITE| \
 			SYNC_FILE_RANGE_WAIT_AFTER)
@@ -381,9 +380,6 @@ int vfs_fsync_range(struct file *file, loff_t start, loff_t end, int datasync)
 #endif
 	if (!file->f_op || !file->f_op->fsync)
 		return -EINVAL;
-#ifdef CONFIG_DYNAMIC_FSYNC
-	}
-#endif
 #ifdef FEATURE_PRINT_FSYNC_PID
 	time1 = sched_clock();
 mutex_lock(&fsync_mutex);
@@ -453,6 +449,9 @@ mutex_unlock(&fsync_mutex);
 #endif	
 
 	return file->f_op->fsync(file, start, end, datasync);
+#ifdef CONFIG_DYNAMIC_FSYNC
+	}
+#endif
 }
 EXPORT_SYMBOL(vfs_fsync_range);
 
