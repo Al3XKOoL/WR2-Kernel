@@ -374,7 +374,7 @@ config CPU_FREQ_GOV_SAKURACTIVE
           architectures which transition to low power states when only
           the "master" CPU is online, or for thermally constrained
           devices.
-         If you don't have one of these architectures or devices, use
+	  If you don't have one of these architectures or devices, use
           'ondemand' instead.
 
           If in doubt, say N.
