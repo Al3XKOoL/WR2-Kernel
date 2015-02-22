@@ -53,3 +53,4 @@ GTAGS
 
 out
 build_results
+*_ramdisk.img
