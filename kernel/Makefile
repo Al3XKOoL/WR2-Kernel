@@ -349,12 +349,11 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-OPTFLAGS = -mcpu=cortex-a7 -mfpu=neon \
-		   -ffast-math -fsingle-precision-constant \
-		   -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr
+OPTFLAGS        = -fgcse-las \
+                  -fpredictive-commoning
 CFLAGS_MODULE   = -fno-pic -fgcse-las $(OPTFLAGS)
 AFLAGS_MODULE   = $(OPTFLAGS)
-LDFLAGS_MODULE  =
+LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL	= $(OPTFLAGS)
 AFLAGS_KERNEL	= $(OPTFLAGS)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
@@ -374,7 +373,10 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
-		   -mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=softfp
+                   -mtune=cortex-a7 -march=armv7-a -mfpu=neon-vfpv4 \
+                   -ftree-vectorize \
+                   -ffast-math
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
