@@ -79,7 +79,7 @@ struct logger_entry {
 #endif
 
 #ifndef __EVENTS_BUF_SIZE
-#define __EVENTS_BUF_SIZE 32*1024 
+#define __EVENTS_BUF_SIZE 32*1024
 #endif
 
 #ifndef __RADIO_BUF_SIZE
