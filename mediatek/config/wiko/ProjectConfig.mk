@@ -1514,7 +1514,7 @@ WIFI_WEP_KEY_ID_SET=no
 
 # WIFI_WPS_PIN_FROM_AP: yes, show WPS pin from ap item
 #  no, hide WPS pin form ap item.
-WIFI_WPS_PIN_FROM_AP=no
+WIFI_WPS_PIN_FROM_AP=yes
 
 # Define which modem will be used.
 CUSTOM_MODEM=mt6582_s5500_hspa_gemini

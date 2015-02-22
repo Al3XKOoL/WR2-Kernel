@@ -12,6 +12,13 @@ obj-$(CONFIG_CPU_FREQ_GOV_HYBRID)	+= cpufreq_hybrid.o
 obj-$(CONFIG_CPU_FREQ_GOV_HOTPLUG)	+= cpufreq_hotplug.o
 obj-$(CONFIG_CPU_FREQ_GOV_BALANCE)	+= cpufreq_balance.o
 obj-$(CONFIG_CPU_FREQ_GOV_CONSERVATIVE)	+= cpufreq_conservative.o
+obj-$(CONFIG_CPU_FREQ_GOV_SMARTASS2) += cpufreq_smartass2.o
+obj-$(CONFIG_CPU_FREQ_GOV_PEGASUSQ) += cpufreq_pegasusq.o
+obj-$(CONFIG_CPU_FREQ_GOV_LULZACTIVEQ) += cpufreq_lulzactiveq.o
+obj-$(CONFIG_CPU_FREQ_GOV_ZZMOOVE) += cpufreq_zzmoove.o
+obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVEX) += cpufreq_interactiveX.o
+obj-$(CONFIG_CPU_FREQ_GOV_NIGHTMARE) += cpufreq_nightmare.o
+obj-$(CONFIG_CPU_FREQ_GOV_SAKURACTIVE) += cpufreq_sakuractive.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVE)	+= cpufreq_interactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_SMARTMAX)     += cpufreq_smartmax.o
 
