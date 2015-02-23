@@ -136,9 +136,6 @@ DIFF=$(($DATE_END - $DATE_START))
 echo "Last version: $last_kversion"
 echo "Current version: $current_kversion"
 
-#Now it's time to export current version
-echo "$current_kversion" > .numero
-
 echo
 echo
 echo "Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
