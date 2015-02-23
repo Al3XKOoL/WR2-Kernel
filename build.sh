@@ -2,7 +2,7 @@
 set -e
 
 #Toolchain
-export CROSS_COMPILE=toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9/bin/arm-cortex_a7-linux-gnueabihf-
+export CROSS_COMPILE=`pwd`/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9/bin/arm-cortex_a7-linux-gnueabihf-
 
 #AKB Version
 version=1.1
