@@ -96,7 +96,7 @@ fi
  echo ""
  echo ""
  mediatek/build/tools/images/acp -uv out/target/product/${TARGET_PRODUCT}/kernel_${TARGET_PRODUCT}.bin out/target/product/${TARGET_PRODUCT}/kernel
- mediatek/build/tools/images/mkbootfs mediatek/host/root | mediatek/build/tools/images/minigzip > out/target/product/${TARGET_PRODUCT}/ramdisk.img
+ mediatek/build/tools/images/mkbootfs mediatek/host/${TARGET_PRODUCT} | mediatek/build/tools/images/minigzip > out/target/product/${TARGET_PRODUCT}/ramdisk.img
  mediatek/build/tools/mkimage out/target/product/${TARGET_PRODUCT}/ramdisk.img ROOTFS > out/target/product/${TARGET_PRODUCT}/ramdisk_android.img
  mv out/target/product/${TARGET_PRODUCT}/ramdisk.img mediatek/kernel/trace32/${TARGET_PRODUCT}_ramdisk.img
  mv out/target/product/${TARGET_PRODUCT}/ramdisk_android.img out/target/product/${TARGET_PRODUCT}/ramdisk.img
