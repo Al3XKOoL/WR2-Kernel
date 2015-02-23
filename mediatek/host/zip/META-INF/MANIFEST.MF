@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: files/busybox
+SHA1-Digest: CRoSQWZY0SAmsBMXYh5+W6x5rXA=
+
+Name: boot.img
+SHA1-Digest: eQShsTY/NtX/o8jdIDZQd90aS+8=
+
+Name: files/build.prop.sh
+SHA1-Digest: EWYXgt6T1ppIgBQxXePucGGXJIU=
+
+Name: init.d/sysinit
+SHA1-Digest: 0fgG/DLUBU3Q/iZ3bciSOSus9xU=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: EYFOh5Ps0x5m8mG9szm8WIAib+E=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: 75dSEs/WCdvfSW122cs1RsnuYTs=
+

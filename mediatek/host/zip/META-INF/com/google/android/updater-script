@@ -1,0 +1,94 @@
+set_progress(0.0);
+mount("ext4", "EMMC", "/dev/block/mmcblk0p5", "/system");
+ui_print("");
+ui_print("*********WR-Kernel********");
+ui_print("*******By @Al3XKOoL*******");
+ui_print("**a.k.a moonrotation@xda**");
+ui_print("**Started by @SiddheshK15*");
+ui_print("");
+ui_print("");
+sleep(5);
+ui_print("");
+ui_print("");
+ui_print("");
+ui_print("");
+ui_print("");
+ui_print("Checking If Rainbow");
+sleep(2);
+ifelse(
+	file_getprop("/system/build.prop", "ro.product.model") == "RAINBOW",
+	(
+		ui_print("Wiko RAINBOW Detected");
+		ui_print("Installing WR-Kernel boot.img....");
+		assert(package_extract_file("boot.img", "/tmp/boot.img"),
+		       write_raw_image("/tmp/boot.img", "bootimg"),
+		       delete("/tmp/boot.img"));
+		ui_print("WR-Kernel Installed");
+	),
+	(
+		ui_print("Skipping, Is Not Wiko Rainbow");
+		ui_print("***NEED To be on WIKO BASE***");
+		sleep(5);
+		ui_print("");
+		ui_print("");
+		ui_print("");
+		ui_print("");
+		ui_print("");
+		ui_print("If you use custom ROM****");
+		ui_print("********WIKO BASE********");
+		ui_print("Make sure your build.prop");
+		ui_print("ro.product.model=RAINBOW");
+		sleep(6);
+		ui_print("Rebooting...");
+		ui_print("3.");
+		sleep(1);
+		ui_print("2..");
+		sleep(1);
+		ui_print("1...");
+		sleep(1);
+		run_program("/system/bin/reboot");
+	)
+);
+set_progress(0.25);
+ui_print("Checking Sysinit Support Ready ROM");
+ifelse(
+	run_program("/system/bin/sh", "-c", "test -f /system/bin/sysinit") == 0,
+	(
+		ui_print("Skipping, Sysinit Already Exists");
+		sleep(3);
+	),
+	(
+		ui_print("Not Supported, Adding This...");
+		package_extract_file("init.d/sysinit", "/system/bin/sysinit");
+		set_perm(0, 0, 0777, "/system/bin/sysinit");
+		ui_print("Sysinit Installed");
+		sleep(3);
+	)
+);
+set_progress(0.50);
+ui_print("Checking Busybox Support Ready ROM");
+ifelse(
+	run_program("/system/bin/sh", "-c", "test -f /system/xbin/busybox") == 0,
+	(
+		ui_print("Skipping, Busybox Already Exists");
+		sleep(3);
+	),
+	(
+		ui_print("Busybox Not Found, Installing...");
+		package_extract_file("files/busybox", "/system/xbin/busybox");
+		set_perm(0, 0, 0777, "/system/xbin/busybox");
+		run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin");
+		ui_print("Busybox Installed");
+		sleep(3);
+	)
+);
+set_progress(0.75);
+ui_print("Checking build.prop Selinux Info");
+assert(package_extract_file("files/build.prop.sh", "/tmp/build.prop.sh");
+set_perm(0, 0, 0777, "/tmp/build.prop.sh");
+run_program("/tmp/build.prop.sh");
+sleep(3);
+delete("/tmp/build.prop.sh"));
+unmount("/system");
+set_progress(1.0);
+ui_print("All DONE!!!");

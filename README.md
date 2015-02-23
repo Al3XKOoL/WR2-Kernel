@@ -1,9 +1,10 @@
-Wiko Rainbow Custom Kernel [3.4.106] 
+     Wiko Rainbow/Micromax A120
+       Custom Kernel [3.4.106] 
 ========================================
 
-kernel:
+Export toolchain:
 
-cd tinno82_S5501
+cd to kernel directory
 
 run command: 
 
@@ -11,15 +12,12 @@ run command:
 
 ========================================
 
-Now build:
+Build kernel:
 
-./mk -o=TARGET_BUILD_VARIANT=user n k
+./build.sh
 
-Or verbose
-
-./mk -t -o=TARGET_BUILD_VARIANT=user n k
+and select your decive
 
 ========================================
 
-Then, to create the boot.img:
-./pack_bootimage.sh
+Find flashable zip into build_results folder
