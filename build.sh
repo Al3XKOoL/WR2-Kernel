@@ -124,8 +124,8 @@ fi
 # Make flashable zip
  cp out/target/product/${TARGET_PRODUCT}/boot.img mediatek/host/zip
  cd mediatek/host/zip
- zip -r -0 WR-Kernel.zip ./*
- mv WR-Kernel.zip ../../../build_results
+ zip -r -0 WR-Kernel-${TARGET_PRODUCT}.zip ./*
+ mv WR-Kernel-${TARGET_PRODUCT}.zip ../../../build_results
  rm ../../../mediatek/host/zip/boot.img
  echo "		==> [OK]   Find all filen into build_results folder!"
 
