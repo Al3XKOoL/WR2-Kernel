@@ -117,7 +117,7 @@ fi
  if [ "$(ls -A ./build_results)" ]; then
  rm -R ./build_results
  fi
- mkdir build_results
+ mkdir -p build_results
  cp out/target/product/${TARGET_PRODUCT}/boot.img build_results
  cp out/target/product/${TARGET_PRODUCT}/kernel build_results
  mv build_results/kernel build_results/zImage
