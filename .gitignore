@@ -48,7 +48,6 @@ GSYMS
 GTAGS
 
 *.orig
-\#*#
 
 out
 build_results
