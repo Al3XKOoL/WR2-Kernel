@@ -1,18 +1,18 @@
 Signature-Version: 1.0
 Created-By: 1.0 (Android SignApk)
-SHA1-Digest-Manifest: rHXA8n7OvEq3Cw9sDZvynjUi8g4=
+SHA1-Digest-Manifest: D19Cmo36Lgy7dj8OQO5jKXOabZA=
 
 Name: files/busybox
 SHA1-Digest: kF9qEbtEilryfa1uljru6qzooAo=
 
 Name: boot.img
-SHA1-Digest: IwpFvBoZtrjVNf+SPB+T0o2Mibw=
+SHA1-Digest: +p+yymH9b8qL8+Qh1IXnGv5qHa0=
 
 Name: files/build.prop.sh
 SHA1-Digest: i5m9A8Plc1TumafxTL6xVFQcxLk=
 
 Name: META-INF/com/google/android/updater-script
-SHA1-Digest: obeGnBuPB5FE6DZbj8mzoSL8GQw=
+SHA1-Digest: 5dbkbGg/b2JKfElp0s4R0Bkzazc=
 
 Name: init.d/sysinit
 SHA1-Digest: lsyZwNQibpQOc49SSm7AbM/w05s=
