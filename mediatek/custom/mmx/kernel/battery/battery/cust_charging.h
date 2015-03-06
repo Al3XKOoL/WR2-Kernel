@@ -38,7 +38,7 @@
 
 /* Precise Tunning */
 #define BATTERY_AVERAGE_DATA_NUMBER	3	
-#define BATTERY_AVERAGE_SIZE 	12
+#define BATTERY_AVERAGE_SIZE 	15
 
 /* charger error check */
 #define BAT_LOW_TEMP_PROTECT_ENABLE         // stop charging if temp < MIN_CHARGE_TEMPERATURE
