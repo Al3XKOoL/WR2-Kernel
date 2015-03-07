@@ -255,7 +255,7 @@ HAVE_SRSAUDIOEFFECT_FEATURE=no
 HAVE_VORBISENC_FEATURE=yes
 
 # It decide whether the system has XLOG mechanism. XLOG is a log filter mechanism which can filter the logs by tag before they are written to log buffer
-HAVE_XLOG_FEATURE=yes
+HAVE_XLOG_FEATURE=no
 HW_HAVE_TP_THREAD=no
 IS_VCORE_USE_6333VCORE=no
 IS_VM_USE_6333VM=no
@@ -371,7 +371,7 @@ MTK_BEAM_PLUS_SUPPORT=no
 
 # yes, turn on benchmark boost thermal policy
 # no, turn off benchmark boost thermal policy.
-MTK_BENCHMARK_BOOST_TP=no
+MTK_BENCHMARK_BOOST_TP=yes
 MTK_BESLOUDNESS_SUPPORT=no
 MTK_BG_POWER_SAVING_SUPPORT=no
 MTK_BG_POWER_SAVING_UI_SUPPORT=no
@@ -916,7 +916,7 @@ MTK_LOG2SERVER_APP=no
 MTK_LOG2SERVER_INTERNAL=no
 
 # Support low bandwith application transition animation. For some project HW power does not enough, it can enhance application transition animation FPS.
-MTK_LOW_BAND_TRAN_ANIM=no
+MTK_LOW_BAND_TRAN_ANIM=yes
 MTK_LTE_DC_SUPPORT=no
 MTK_LTE_SUPPORT=no
 
@@ -939,7 +939,7 @@ MTK_MD2_SUPPORT=4
 MTK_MD5_SUPPORT=5
 
 # It's used to control MDLogger which output the Modem Log and Memory dump information.
-MTK_MDLOGGER_SUPPORT=yes
+MTK_MDLOGGER_SUPPORT=no
 
 # Switch for DM in-house solution.
 MTK_MDM_APP=no
@@ -978,7 +978,7 @@ MTK_MT8193_NFI_SUPPORT=no
 MTK_MT8193_SUPPORT=no
 
 # yes: to include MTKLogger
-MTK_MTKLOGGER_SUPPORT=yes
+MTK_MTKLOGGER_SUPPORT=no
 
 # enable/disable ogm and mtkps playback feature
 MTK_MTKPS_PLAYBACK_SUPPORT=no
