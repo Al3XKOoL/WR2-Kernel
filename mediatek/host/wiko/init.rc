@@ -8,9 +8,9 @@
 import /init.usb.rc
 import /init.trace.rc
 
-import /FWUpgradeInit.rc
+#import /FWUpgradeInit.rc
 
-import init.xlog.rc
+#import init.xlog.rc
 
 on early-init
     # Set init and its forked children's oom_adj.
@@ -52,7 +52,7 @@ on init
 
 sysclktz 0
 
-loglevel 6
+loglevel 3
     write /proc/bootprof "INIT: on init start"
 
 # setup the global environment
@@ -261,9 +261,9 @@ on fs_property:ro.persist.partition.support=yes
 # checker programs.
     mkdir /dev/fscklogs 0770 root system
 
-on fs
+#on fs
 
-   mount iso9660 loop@/system/mobile_toolkit/iAmCdRom.iso /mnt/cd-rom ro
+#   mount iso9660 loop@/system/mobile_toolkit/iAmCdRom.iso /mnt/cd-rom ro
 on post-fs
     # change sbchk permission before mounted as read-only
     mount rootfs rootfs / rw remount
@@ -754,7 +754,7 @@ on boot
    start drvbd
 
     # xlog
-    start xlogboot
+#    start xlogboot
 
 # basic network init
     ifup lo
@@ -1003,8 +1003,8 @@ on property:persist.uartconsole.enable=1
 ##
 
 # Update the second boot logo
-service bootlogoupdater /system/bin/boot_logo_updater
-    oneshot
+# service bootlogoupdater /system/bin/boot_logo_updater
+#    oneshot
 
 service ueventd /sbin/ueventd
     class core
@@ -1064,8 +1064,8 @@ service drvbd /system/bin/drvbd
 service debuggerd /system/bin/debuggerd
     class main
 
-service mobile_log_d /system/bin/mobile_log_d
-    class main
+#service mobile_log_d /system/bin/mobile_log_d
+#    class main
     
 # bugreport is triggered by ctl.start bugreport
 service bugreport /system/bin/bugmailer.sh -v
@@ -1079,11 +1079,11 @@ service servicemanager /system/bin/servicemanager
     group system
     critical
     onrestart restart healthd
-    onrestart restart zygote
+#   onrestart restart zygote
     onrestart restart media
-    onrestart restart surfaceflinger
+#   onrestart restart surfaceflinger
     onrestart restart drm
-    onrestart restart aal
+#   onrestart restart aal
 
 service vold /system/bin/vold
     class core
@@ -1148,10 +1148,10 @@ service audio-daemon /system/bin/audiocmdservice_atci
     disabled
     oneshot
 
-service md_minilog_util /system/bin/md_minilog_util
-    user root
-    disabled
-    oneshot
+#service md_minilog_util /system/bin/md_minilog_util
+#    user root
+#    disabled
+#    oneshot
     
 service pq /system/bin/pq
     class main
@@ -1163,7 +1163,7 @@ service surfaceflinger /system/bin/surfaceflinger
     class main
 #    user system
     group graphics
-    onrestart restart zygote
+#    onrestart restart zygote
 
 service aal /system/bin/aal
     class main
@@ -1493,35 +1493,35 @@ service ipod /system/bin/ipod
     socket ipohctl stream 0660 root root
     disabled
 
-service extmdlogger /system/bin/extmdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet media_rw sdcard_r ccci
+#service extmdlogger /system/bin/extmdlogger
+#    class main
+#    user shell
+#    group shell system radio sdcard_rw inet media_rw sdcard_r ccci
 
-service GoogleOtaAgent /system/bin/GoogleOtaBinder
-    user system
-    group system
+#service GoogleOtaAgent /system/bin/GoogleOtaBinder
+#    user system
+#    group system
 
-service mdlogger /system/bin/mdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet media_rw sdcard_r ccci
-    disabled
-    oneshot
+#service mdlogger /system/bin/mdlogger
+#    class main
+#    user shell
+#    group shell system radio sdcard_rw inet media_rw sdcard_r ccci
+#    disabled
+#    oneshot
 
-service dualmdlogger /system/bin/dualmdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet sdcard_r media_rw ccci
-    disabled
-    oneshot
+#service dualmdlogger /system/bin/dualmdlogger
+#    class main
+#    user shell
+#    group shell system radio sdcard_rw inet sdcard_r media_rw ccci
+#    disabled
+#    oneshot
     
-service emcsmdlogger /system/bin/emcsmdlogger
-    class main
-    user shell
-    group system shell radio sdcard_rw inet media_rw sdcard_r ccci
-    disabled
-    oneshot
+#service emcsmdlogger /system/bin/emcsmdlogger
+#    class main
+#    user shell
+#    group system shell radio sdcard_rw inet media_rw sdcard_r ccci
+#    disabled
+#    oneshot
 
 #
 #sensor service (begin)
@@ -1701,10 +1701,10 @@ service batterywarning /system/bin/batterywarning
     user shell
     group shell
 
-service backuprestore /system/bin/br_app_data_service
-	class main
-	socket backuprestore stream 0660 root sdcard_rw
-	user root
+#service backuprestore /system/bin/br_app_data_service
+#	class main
+#	socket backuprestore stream 0660 root sdcard_rw
+#	user root
 	
 #service BGW /system/xbin/BGW
 #	user system
