@@ -373,8 +373,8 @@ MTK_BEAM_PLUS_SUPPORT=no
 # no, turn off benchmark boost thermal policy.
 MTK_BENCHMARK_BOOST_TP=yes
 MTK_BESLOUDNESS_SUPPORT=no
-MTK_BG_POWER_SAVING_SUPPORT=no
-MTK_BG_POWER_SAVING_UI_SUPPORT=no
+MTK_BG_POWER_SAVING_SUPPORT=yes
+MTK_BG_POWER_SAVING_UI_SUPPORT=yes
 MTK_BICR_SUPPORT=no
 
 # Support TCP server and TCP client mode channel
@@ -705,7 +705,7 @@ MTK_FAN5402_SUPPORT=no
 
 # use external charger IC, MTK support
 MTK_FAN5405_SUPPORT=no
-MTK_FASTBOOT_SUPPORT=no
+MTK_FASTBOOT_SUPPORT=yes
 
 # For NAND phone such as in EMMC phone with internal sd card, FAT on NAND feature was cut from NAND to be a independent fat partition,and create FAT image file over /fat yaffs2 file system, then let NAND phone can support FAT file system in internal.
 MTK_FAT_ON_NAND=no
