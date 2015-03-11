@@ -43,7 +43,6 @@ do
   echo
   echo "  1 - Wiko RAINBOW"
   echo "  2 - Micromax A120 C2C"
-  echo "  3 - Explay Fresh"
   echo
   echo "  x - Exit"
   echo
@@ -53,7 +52,6 @@ do
 	case $opt in
 		1) TARGET_PRODUCT=wiko; break;;
 		2) TARGET_PRODUCT=mmx; break;;
-		3) TARGET_PRODUCT=explay; break;;
 		x) clear; echo; echo "Goodbye."; echo; exit 1;;
 		*) ERR_MSG="Invalid option!"; clear;;
 	esac
