@@ -80,7 +80,6 @@ CUSTOM_HAL_SENSORS=sensor
 CUSTOM_HAL_SUB_BACKUP_LENS=
 
 # User space driver: Sub camera (front camera )used sensor related tuning, setting and calibration information. Value is used sub sensor name.
-#CUSTOM_HAL_SUB_IMGSENSOR = hi256_mipi_yuv
 CUSTOM_HAL_SUB_IMGSENSOR=hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # lens driver config for video telephony camera

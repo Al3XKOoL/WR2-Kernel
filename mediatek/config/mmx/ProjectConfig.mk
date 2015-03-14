@@ -55,8 +55,6 @@ CUSTOM_HAL_EEPROM=dummy_eeprom
 CUSTOM_HAL_FLASHLIGHT=dummy_flashlight
 
 # User space image sensor driver. Define  project used all image sensors. The value is combination of CUSTOM_HAL_MAIN_IMGSENSOR, CUSTOM_HAL_MAIN_BACKUP_IMGSENSOR, CUSTOM_HAL_SUB_IMGSENSOR, and CUSTOM_HAL_SUB_BACKUP_IMGSENSOR
-# CUSTOM_HAL_IMGSENSOR=imx111_mipi_raw ov5648_mipi_raw ov5649_mipi_raw
-#CUSTOM_HAL_IMGSENSOR=ov8825_mipi_raw hi256_mipi_yuv ov8826_mipi_raw s5k3h7y_mipi_raw 
 CUSTOM_HAL_IMGSENSOR=ov8825_mipi_raw hi256_mipi_yuv ov8826_mipi_raw s5k3h7y_mipi_raw liteon3h7y_mipi_raw hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # = CUSTOM_HAL_MAIN_LENS +CUSTOM_HAL_MAIN_BACKUP_LENS + CUSTOM_HAL_SUB_LENS + CUSTOM_HAL_SUB_BACKUP_LENS
@@ -73,7 +71,7 @@ CUSTOM_HAL_MAIN_IMGSENSOR = ov8825_mipi_raw ov8826_mipi_raw s5k3h7y_mipi_raw lit
 CUSTOM_HAL_MAIN_LENS=ov8825af ov8826af fm50af liteon3h7af
 
 # M-sensor hal layer library including daemon
-CUSTOM_HAL_MSENSORLIB=mmc328x akm8975 ami304 yamaha530 mag3110 akmd8963 bmm050 mc6420 mmc3416x s62xd lsm303md hscdtd006 qmc5983 akmd09911 bmm056
+CUSTOM_HAL_MSENSORLIB=akmd09911
 
 # sensor hal layer common part
 CUSTOM_HAL_SENSORS=sensor
@@ -82,17 +80,16 @@ CUSTOM_HAL_SENSORS=sensor
 CUSTOM_HAL_SUB_BACKUP_LENS=
 
 # User space driver: Sub camera (front camera )used sensor related tuning, setting and calibration information. Value is used sub sensor name.
-#CUSTOM_HAL_SUB_IMGSENSOR = hi256_mipi_yuv
-CUSTOM_HAL_SUB_IMGSENSOR = hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
+CUSTOM_HAL_SUB_IMGSENSOR=hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # lens driver config for video telephony camera
 CUSTOM_HAL_SUB_LENS=dummy_lens
 
 # accelerometer sensor to detect accelerometer from x y z axis.
-CUSTOM_KERNEL_ACCELEROMETER=bma222E_auto KXTJ2_1009_auto
+CUSTOM_KERNEL_ACCELEROMETER=bma222E_auto
 
 # ALSPS sensor driverto detect ambint light and the object is close or far awary from device
-CUSTOM_KERNEL_ALSPS = ltr501
+CUSTOM_KERNEL_ALSPS=ltr501
 
 # Pressure sensor driver to detect pressure
 CUSTOM_KERNEL_BAROMETER=
@@ -126,8 +123,7 @@ CUSTOM_KERNEL_GYROSCOPE=
 CUSTOM_KERNEL_HEADSET=accdet
 
 # Kernel space image sensor driver. Define  project used all image sensors .The value is combination of CUSTOM_KERNEL_MAIN_IMGSENSOR, CUSTOM_KERNEL_MAIN_BACKUP_IMGSENSOR, CUSTOM_KERNEL_SUB_IMGSENSOR, and CUSTOM_KERNEL_SUB_BACKUP_IMGSENSOR
-#CUSTOM_KERNEL_IMGSENSOR = ov8825_mipi_raw hi256_mipi_yuv ov8826_mipi_raw s5k3h7y_mipi_raw
-CUSTOM_KERNEL_IMGSENSOR = ov8825_mipi_raw hi256_mipi_yuv ov8826_mipi_raw s5k3h7y_mipi_raw liteon3h7y_mipi_raw hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
+CUSTOM_KERNEL_IMGSENSOR=ov8825_mipi_raw hi256_mipi_yuv ov8826_mipi_raw s5k3h7y_mipi_raw liteon3h7y_mipi_raw hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # key pad driver to report key event
 CUSTOM_KERNEL_KPD=kpd
@@ -139,7 +135,7 @@ CUSTOM_KERNEL_LEDS=mt65xx
 CUSTOM_KERNEL_LENS=ov8825af ov8826af fm50af liteon3h7af sensordrive dummy_lens
 
 # compass driver to detect compass raw data and report orientatino data
-CUSTOM_KERNEL_MAGNETOMETER = akm09911
+CUSTOM_KERNEL_MAGNETOMETER=akm09911
 CUSTOM_KERNEL_MAIN2_IMGSENSOR=
 
 # Kernel space image sensor  driver:Main camera (rear camera) used backup sensor driver.Value is used main backup sensor name.
@@ -149,7 +145,7 @@ CUSTOM_KERNEL_MAIN_BACKUP_IMGSENSOR=
 CUSTOM_KERNEL_MAIN_BACKUP_LENS=sensordrive
 
 # Kernel space image sensor driver:Main camera (rear camera) used sensor driver.Value is used main sensor name.
-CUSTOM_KERNEL_MAIN_IMGSENSOR = ov8825_mipi_raw ov8826_mipi_raw s5k3h7y_mipi_raw liteon3h7y_mipi_raw
+CUSTOM_KERNEL_MAIN_IMGSENSOR=ov8825_mipi_raw ov8826_mipi_raw s5k3h7y_mipi_raw liteon3h7y_mipi_raw
 
 # lens driver config for main camera
 CUSTOM_KERNEL_MAIN_LENS=ov8825af ov8826af fm50af liteon3h7af
@@ -158,22 +154,21 @@ CUSTOM_KERNEL_MAIN_LENS=ov8825af ov8826af fm50af liteon3h7af
 CUSTOM_KERNEL_RTC=rtc
 
 # For audio kernel driver's speaker customization folder definition.
-CUSTOM_KERNEL_SOUND = amp_yad
+CUSTOM_KERNEL_SOUND=amp_yad
 CUSTOM_KERNEL_SSW=ssw_single
 
 # lens driver config for video telephony camera (2nd solution)
 CUSTOM_KERNEL_SUB_BACKUP_LENS=
 
 # Kernel space image sensor driver:Sub camera (front camera) used sensor driver.Value is used sub sensor name.
-#CUSTOM_KERNEL_SUB_IMGSENSOR = hi256_mipi_yuv
-CUSTOM_KERNEL_SUB_IMGSENSOR = hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
+
+CUSTOM_KERNEL_SUB_IMGSENSOR=hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # lens driver config for video telephony camera
 CUSTOM_KERNEL_SUB_LENS=dummy_lens
 
 # touch driver  need to report correct touch axes
-# CUSTOM_KERNEL_TOUCHPANEL = S320X
-CUSTOM_KERNEL_TOUCHPANEL = Goodix9xx
+CUSTOM_KERNEL_TOUCHPANEL=Goodix9xx
 
 # Configuration for USB PHY
 CUSTOM_KERNEL_USB=mt6577
@@ -182,8 +177,8 @@ CUSTOM_KERNEL_USB=mt6577
 CUSTOM_KERNEL_VIBRATOR=vibrator
 
 # To choose LK LCM driver name
-# CUSTOM_LK_LCM = hx8394a_dsi_vdo
-CUSTOM_LK_LCM = otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
+
+CUSTOM_LK_LCM=otm1283a_hd720_dsi_vdo
 
 # A mechanism for customer to enable their own sign key.
 CUSTOM_PRELOADER_CUSTOM=custom
@@ -1577,11 +1572,10 @@ MTK_HDMI_SUPPORT=no
 BOOT_LOGO=hd720
 
 # To choose kernel LCM driver name
-CUSTOM_KERNEL_LCM=otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
+CUSTOM_KERNEL_LCM=otm1283a_hd720_dsi_vdo
 
 # To choose uboot LCM driver name
-CUSTOM_UBOOT_LCM=otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
-
+CUSTOM_UBOOT_LCM=otm1283a_hd720_dsi_vdo
 # To set LCM resolution height size
 LCM_HEIGHT=1280
 
