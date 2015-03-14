@@ -1529,17 +1529,17 @@ service msensord /system/bin/msensord
     class main
     oneshot
 
-service s62xd /system/bin/s62xd
-    disabled
-    user compass
-    group system
-    class main
+#service s62xd /system/bin/s62xd
+#    disabled
+#    user compass
+#    group system
+#    class main
 
-service ami304d /system/bin/ami304d
-    user system
-    group system
-    disabled
-    class main
+#service ami304d /system/bin/ami304d
+#    user system
+#    group system
+#    disabled
+#    class main
 
 service memsicd /system/bin/memsicd
      disabled
@@ -1554,17 +1554,17 @@ service memsicd3416x /system/bin/memsicd3416x
     class main
     oneshot
 
-service akmd8975 /system/bin/akmd8975
-    disabled
-    user system
-    group system
-    class main
+#service akmd8975 /system/bin/akmd8975
+#    disabled
+#    user system
+#    group system
+#    class main
 
-service akmd8963 /system/bin/akmd8963
-    disabled
-    user system
-    group system
-    class main
+#service akmd8963 /system/bin/akmd8963
+#    disabled
+#    user system
+#    group system
+#    class main
 
 service akmd09911 /system/bin/akmd09911
     disabled
@@ -1572,23 +1572,23 @@ service akmd09911 /system/bin/akmd09911
     group system
     class main
 
-service bmm050d /system/bin/bmm050d
-    disabled
-    user system
-    group system
-    class main
+#service bmm050d /system/bin/bmm050d
+#    disabled
+#    user system
+#    group system
+#    class main
 
-service mc6420d /system/bin/mc6420d
-    disabled
-    user system
-    group system
-    class main
+#service mc6420d /system/bin/mc6420d
+#    disabled
+#    user system
+#    group system
+#    class main
     
-service qmc5983d /system/bin/qmc5983d
-     disabled
-	 user system
-    group system
-    class main
+#service qmc5983d /system/bin/qmc5983d
+#    disabled
+#    user system
+#    group system
+#    class main
 
 service orientationd /system/bin/orientationd
     disabled

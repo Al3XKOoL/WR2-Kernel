@@ -71,7 +71,7 @@ CUSTOM_HAL_MAIN_IMGSENSOR = ov8825_mipi_raw ov8826_mipi_raw s5k3h7y_mipi_raw lit
 CUSTOM_HAL_MAIN_LENS=ov8825af ov8826af fm50af liteon3h7af
 
 # M-sensor hal layer library including daemon
-CUSTOM_HAL_MSENSORLIB=mmc328x akm8975 ami304 yamaha530 mag3110 akmd8963 bmm050 mc6420 mmc3416x s62xd lsm303md hscdtd006 qmc5983 akmd09911 bmm056
+CUSTOM_HAL_MSENSORLIB=akmd09911
 
 # sensor hal layer common part
 CUSTOM_HAL_SENSORS=sensor
@@ -81,13 +81,13 @@ CUSTOM_HAL_SUB_BACKUP_LENS=
 
 # User space driver: Sub camera (front camera )used sensor related tuning, setting and calibration information. Value is used sub sensor name.
 #CUSTOM_HAL_SUB_IMGSENSOR = hi256_mipi_yuv
-CUSTOM_HAL_SUB_IMGSENSOR = hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
+CUSTOM_HAL_SUB_IMGSENSOR=hi256_mipi_yuv hi258_mipi_yuv_cmk hi258_mipi_yuv_sw
 
 # lens driver config for video telephony camera
 CUSTOM_HAL_SUB_LENS=dummy_lens
 
 # accelerometer sensor to detect accelerometer from x y z axis.
-CUSTOM_KERNEL_ACCELEROMETER=bma222E_auto KXTJ2_1009_auto
+CUSTOM_KERNEL_ACCELEROMETER=bma222E_auto
 
 # ALSPS sensor driverto detect ambint light and the object is close or far awary from device
 CUSTOM_KERNEL_ALSPS=ltr501
