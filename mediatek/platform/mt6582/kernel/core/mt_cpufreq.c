@@ -182,7 +182,7 @@ static bool mt_cpufreq_pause = false;
 static bool mt_cpufreq_ptpod_disable = false;
 static bool mt_cpufreq_ptpod_voltage_down = false;
 //static bool mt_cpufreq_max_freq_overdrive = false;
-static bool mt_cpufreq_limit_max_freq_early_suspend = true;
+static bool mt_cpufreq_limit_max_freq_early_suspend = false;
 static bool mt_cpufreq_earlysuspend_allow_deepidle_control_vproc = false;
 static bool mt_cpufreq_freq_table_allocated = false;
 #ifdef CPUFREQ_SDIO_TRANSFER
@@ -415,9 +415,9 @@ static unsigned int mt_cpufreq_limit_max_freq_by_early_suspend(void)
     if (!policy)
         goto no_policy;
 
-    cpufreq_driver_target(policy, DVFS_F3, CPUFREQ_RELATION_L);
+    cpufreq_driver_target(policy, DVFS_F2, CPUFREQ_RELATION_L);
 
-    xlog_printk(ANDROID_LOG_INFO, "Power/DVFS", "mt_cpufreq limited max freq by early suspend %d\n", DVFS_F3);
+    xlog_printk(ANDROID_LOG_INFO, "Power/DVFS", "mt_cpufreq limited max freq by early suspend %d\n", DVFS_F2);
 
     cpufreq_cpu_put(policy);
 
@@ -1356,7 +1356,7 @@ static int mt_cpufreq_target(struct cpufreq_policy *policy, unsigned int target_
     *************************************************/
     if(mt_cpufreq_limit_max_freq_early_suspend == true)
     {
-        freqs.new = DVFS_F3;
+        freqs.new = DVFS_F2;
         dprintk("mt_cpufreq_limit_max_freq_early_suspend, freqs.new = %d\n", freqs.new);
     }
 	
