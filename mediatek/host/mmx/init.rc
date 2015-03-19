@@ -425,6 +425,8 @@ on post-fs-data
     #Mali 3D GPU driver
     insmod /system/lib/modules/mali.ko
 
+    #ExFAT external driver		
+    insmod /system/lib/modules/exfat.ko
 
     # Touch Panel
     #chmod 0664 /dev/touch

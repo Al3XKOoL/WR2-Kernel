@@ -118,9 +118,11 @@ fi
  rm -R ./build_results
  fi
  mkdir -p build_results
+ mkdir -p build_results/modules
  cp out/target/product/${TARGET_PRODUCT}/boot.img build_results
  cp out/target/product/${TARGET_PRODUCT}/kernel build_results
  mv build_results/kernel build_results/zImage
+ cp out/target/product/${TARGET_PRODUCT}/obj/KERNEL_OBJ/fs/exfat/exfat.ko build_results/modules
  echo ""
  echo ""
  echo ""
@@ -129,18 +131,18 @@ fi
 
 # Make flashable zip
  cp out/target/product/${TARGET_PRODUCT}/boot.img mediatek/host/zip
+ cp out/target/product/${TARGET_PRODUCT}/obj/KERNEL_OBJ/fs/exfat/exfat.ko mediatek/host/zip/modules
  cd mediatek/host/zip
  zip -r -0 WR2-Kernel-${TARGET_PRODUCT}.zip ./*
  mv WR2-Kernel-${TARGET_PRODUCT}.zip ../../../build_results
  rm ../../../mediatek/host/zip/boot.img
+ rm ../../../mediatek/host/zip/modules/exfat.ko
  echo "		==> [OK]   Find all filen into build_results folder!"
 
 DATE_END=$(date +"%s")
 echo
 echo
 DIFF=$(($DATE_END - $DATE_START))
-echo "Last version: $last_kversion"
-echo "Current version: $current_kversion"
 
 echo
 echo

@@ -5,7 +5,7 @@ Name: files/busybox
 SHA1-Digest: CRoSQWZY0SAmsBMXYh5+W6x5rXA=
 
 Name: boot.img
-SHA1-Digest: mW6J1CaWd0wCjdYiUQ4b2jY9iIM=
+SHA1-Digest: g63W01kXtUsIegxI8uQiheXsSs0=
 
 Name: files/build.prop.sh
 SHA1-Digest: EWYXgt6T1ppIgBQxXePucGGXJIU=
@@ -14,8 +14,11 @@ Name: init.d/sysinit
 SHA1-Digest: 0fgG/DLUBU3Q/iZ3bciSOSus9xU=
 
 Name: META-INF/com/google/android/updater-script
-SHA1-Digest: Ix0lsV2tYd0nfFpV8GOjJU7srfc=
+SHA1-Digest: mf6LFv7BbnxgKitVj///bszqTkM=
 
 Name: META-INF/com/google/android/update-binary
 SHA1-Digest: 75dSEs/WCdvfSW122cs1RsnuYTs=
+
+Name: modules/exfat.ko
+SHA1-Digest: /k39pGN8YzfQY+s3MmG4uaxWbmg=
 

@@ -7,40 +7,40 @@ ui_print("**a.k.a moonrotation@xda**");
 ui_print("**Started by @SiddheshK15*");
 ui_print("");
 ui_print("");
-sleep(5);
-ui_print("");
-ui_print("");
-ui_print("");
-ui_print("");
 ui_print("");
 ui_print("Installing WR2-Kernel boot.img....");
 assert(package_extract_file("boot.img", "/tmp/boot.img"),
 write_raw_image("/tmp/boot.img", "bootimg"),
 delete("/tmp/boot.img"));
 ui_print("WR2-Kernel Installed");
-set_progress(0.25);
+ui_print("");
+set_progress(0.20);
+ui_print("Installing exfat.ko module....");
+package_extract_file("modules/exfat.ko", "/system/lib/modules/exfat.ko");
+set_perm(0, 0, 0644, "/system/lib/modules/exfat.ko");
+ui_print("exfat.ko module Installed");
+ui_print("");
+set_progress(0.40);
 ui_print("Checking Sysinit Support Ready ROM");
 ifelse(
 	run_program("/system/bin/sh", "-c", "test -f /system/bin/sysinit") == 0,
 	(
 		ui_print("Skipping, Sysinit Already Exists");
-		sleep(3);
 	),
 	(
 		ui_print("Not Supported, Adding This...");
 		package_extract_file("init.d/sysinit", "/system/bin/sysinit");
 		set_perm(0, 0, 0777, "/system/bin/sysinit");
 		ui_print("Sysinit Installed");
-		sleep(3);
 	)
 );
+ui_print("");
 set_progress(0.50);
 ui_print("Checking Busybox Support Ready ROM");
 ifelse(
 	run_program("/system/bin/sh", "-c", "test -f /system/xbin/busybox") == 0,
 	(
 		ui_print("Skipping, Busybox Already Exists");
-		sleep(3);
 	),
 	(
 		ui_print("Busybox Not Found, Installing...");
@@ -48,15 +48,14 @@ ifelse(
 		set_perm(0, 0, 0777, "/system/xbin/busybox");
 		run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin");
 		ui_print("Busybox Installed");
-		sleep(3);
 	)
 );
+ui_print("");
 set_progress(0.75);
 ui_print("Checking build.prop Selinux Info");
 assert(package_extract_file("files/build.prop.sh", "/tmp/build.prop.sh");
 set_perm(0, 0, 0777, "/tmp/build.prop.sh");
 run_program("/tmp/build.prop.sh");
-sleep(3);
 delete("/tmp/build.prop.sh"));
 unmount("/system");
 set_progress(1.0);
