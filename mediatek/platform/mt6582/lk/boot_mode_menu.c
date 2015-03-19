@@ -23,7 +23,7 @@ bool g_boot_menu = false;
 void boot_mode_menu_select()
 {
           int select = 0;  // 0=recovery mode, 1=fastboot.  2=normal boot 3=normal boot + ftrace.4=slub debug off
-          const char* title_msg = "Select Boot Mode:\n[VOLUME_UP to select.  VOLUME_DOWN is OK.]\n\n";
+          const char* title_msg = "WR2-Boot menu by moonrotation XDA\nSelect Boot Mode:\n[VOLUME_UP to select.  VOLUME_DOWN is OK.]\n\n";
           video_clean_screen();
           video_set_cursor(video_get_rows()/2, 0);
           video_printf(title_msg);
