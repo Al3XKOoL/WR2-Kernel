@@ -66,7 +66,7 @@ zImage_path=out/target/product/$TARGET_PRODUCT/obj/KERNEL_OBJ/arch/arm/boot/zIma
 BUILDVERSION=WR2-V$current_kversion-`date +%Y%m%d-%H%M`-$TARGET_PRODUCT
 
 #Build phase
-./makeMtk -o=TARGET_BUILD_VARIANT=user -t  $TARGET_PRODUCT n k
+./mk -o=TARGET_BUILD_VARIANT=user -t  $TARGET_PRODUCT n lk && ./mk -o=TARGET_BUILD_VARIANT=user -t  $TARGET_PRODUCT n k
 
 if [ "$(ls -A `pwd`/$zImage_path)" ]; then
 echo "Build Successful"
@@ -120,6 +120,8 @@ fi
  mkdir -p build_results
  mkdir -p build_results/modules
  cp out/target/product/${TARGET_PRODUCT}/boot.img build_results
+ cp out/target/product/${TARGET_PRODUCT}/logo.bin build_results
+ cp out/target/product/${TARGET_PRODUCT}/lk.bin build_results
  cp out/target/product/${TARGET_PRODUCT}/kernel build_results
  mv build_results/kernel build_results/zImage
  cp out/target/product/${TARGET_PRODUCT}/obj/KERNEL_OBJ/fs/exfat/exfat.ko build_results/modules
