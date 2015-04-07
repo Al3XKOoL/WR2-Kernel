@@ -77,8 +77,10 @@
 
 #define SENSOR_DRIVE_LENS_ID                 0x1000
 #define OV8825AF_LENS_ID					 0x0003
-#define BU6429AF_LENS_ID					 0x0004
-#define BU6424AF_LENS_ID					 0x0005
+#define OV8826AF_LENS_ID					 0x0004
+//#define BU6429AF_LENS_ID					 0x0004
+#define LITEON3H7AF_LENS_ID					 0x0005
+//#define BU6424AF_LENS_ID					 0x0005
 #define AD5823AF_LENS_ID					 0x5823
 #define DW9718AF_LENS_ID 					 0x9718
 
