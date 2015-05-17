@@ -701,6 +701,7 @@ MTK_FAN5402_SUPPORT=no
 # use external charger IC, MTK support
 MTK_FAN5405_SUPPORT=no
 MTK_FASTBOOT_SUPPORT=yes
+MTK_SEC_FASTBOOT_UNLOCK_SUPPORT=yes
 
 # For NAND phone such as in EMMC phone with internal sd card, FAT on NAND feature was cut from NAND to be a independent fat partition,and create FAT image file over /fat yaffs2 file system, then let NAND phone can support FAT file system in internal.
 MTK_FAT_ON_NAND=no
