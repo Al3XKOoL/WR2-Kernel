@@ -15,12 +15,6 @@ delete("/tmp/boot.img"));
 ui_print("WR2-Kernel Installed");
 ui_print("");
 set_progress(0.20);
-ui_print("Installing exfat.ko module....");
-package_extract_file("modules/exfat.ko", "/system/lib/modules/exfat.ko");
-set_perm(0, 0, 0644, "/system/lib/modules/exfat.ko");
-ui_print("exfat.ko module Installed");
-ui_print("");
-set_progress(0.40);
 ui_print("Checking Sysinit Support Ready ROM");
 ifelse(
 	run_program("/system/bin/sh", "-c", "test -f /system/bin/sysinit") == 0,
