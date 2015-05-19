@@ -178,7 +178,7 @@ CUSTOM_KERNEL_VIBRATOR=vibrator
 
 # To choose LK LCM driver name
 
-CUSTOM_LK_LCM=otm1283a_hd720_dsi_vdo
+CUSTOM_LK_LCM=otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
 
 # A mechanism for customer to enable their own sign key.
 CUSTOM_PRELOADER_CUSTOM=custom
@@ -1573,10 +1573,10 @@ MTK_HDMI_SUPPORT=no
 BOOT_LOGO=hd720
 
 # To choose kernel LCM driver name
-CUSTOM_KERNEL_LCM=otm1283a_hd720_dsi_vdo
+CUSTOM_KERNEL_LCM=otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
 
 # To choose uboot LCM driver name
-CUSTOM_UBOOT_LCM=otm1283a_hd720_dsi_vdo
+CUSTOM_UBOOT_LCM=otm1283a_hd720_dsi_vdo nt35521_hd720_dsi_vdo_tcl otm1283a_hd720_dsi_vdo_dijing hx8394a_dsi_vdo
 # To set LCM resolution height size
 LCM_HEIGHT=1280
 
